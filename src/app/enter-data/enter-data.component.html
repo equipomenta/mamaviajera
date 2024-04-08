@@ -1,0 +1,59 @@
+<div class="d-flex flex-row fredoka enter-data">
+  <div class="wrapper">
+    <div class="label">
+      Completa tus datos
+    </div>
+    <form class="row g-3">
+      <div class="col-12">
+        <label for="name" class="form-label">Nombres y Apellidos completos</label>
+        <input type="text" class="form-control" id="name">
+      </div>
+      <div class="col-md-6">
+        <label for="dni" class="form-label">DNI</label>
+        <input type="email" class="form-control" id="dni">
+      </div>
+      <div class="col-md-6">
+        <label for="phone" class="form-label">Teléfono / celular</label>
+        <input type="password" class="form-control" id="phone">
+      </div>
+      <div class="col-12">
+        <label for="email" class="form-label">Correo Electrónico</label>
+        <input type="text" class="form-control" id="email">
+      </div>
+      <div class="col-12">
+        <label for="address" class="form-label">Dirección</label>
+        <input type="text" class="form-control" id="address">
+      </div>
+      <div class="col-md-6">
+        <label for="state" class="form-label">Departamento</label>
+        <input type="email" class="form-control" id="state">
+      </div>
+      <div class="col-md-6">
+        <label for="city" class="form-label">Provincia / Distrito</label>
+        <input type="password" class="form-control" id="city">
+      </div>
+      <div class="col-md-6">
+        <label for="inputCity" class="form-label">City</label>
+        <input type="text" class="form-control" id="inputCity">
+      </div>
+      <div class="col-12">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="accept">
+          <label class="form-check-label" for="accept">
+            Acepto términos y condiciones del concurso
+          </label>
+        </div>
+      </div>
+      <div class="col-12 terms">
+        Se autoriza el uso de datos personales<br>
+        En cumplimiento de la Ley 29733 y D.S. 003-2013-JUS.
+      </div>
+      <div class="col-12 button">
+        <button (click)="next()" class="form-control button">Participar</button>
+      </div>
+      <div class="col-12 terms">
+        Revisar todos los términos y condiciones en www.norkys.pe
+      </div>
+    </form>
+  </div>
+</div>

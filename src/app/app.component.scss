@@ -1,0 +1,50 @@
+//@font-face {
+//  font-family: "fredoka";
+//  src: url('../fonts/Fredoka-Bold.ttf');
+//}
+//
+//.fredoka {
+//  font-family: 'fredoka', serif;
+//}
+.sponsor-logos {
+  max-height: 200px;
+  padding: 33px 0;
+}
+
+.main-logos {
+  //background-image: url('../images/fondo-de-playa.png');
+  //background-size: cover;
+  max-height: 530px;
+  padding: 33px 0;
+
+  .texto-banner {
+    max-height: 279px
+  }
+}
+
+.steps {
+  background-color: #209e9a;
+  max-height: 109px;
+
+  .blanco {
+    max-height: 65px;
+  }
+  .celeste {
+    max-height: 54px;
+  }
+}
+
+.user-content {
+  max-height: 869px;
+  //background-image: url("../images/fondo-rosado.png");
+  //background-size: cover;
+  padding: 50px 0;
+
+  .wrapper {
+    max-height: 500px;
+    max-width: 500px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 33px;
+  }
+}

@@ -3,6 +3,19 @@
   src: url('/assets/fonts/Fredoka-Bold.ttf');
 }
 
+@font-face {
+  font-family: "fredoka-semi";
+  src: url('/assets/fonts/Fredoka-SemiBold.ttf');
+}
+
+.fredoka {
+  font-family: 'fredoka', serif;
+}
+
+.fredoka-semi {
+  font-family: 'fredoka-semi', serif;
+}
+
 .fredoka {
   font-family: 'fredoka', serif;
 }
@@ -19,10 +32,12 @@
 
   label {
     color: #209e9a;
+    font-family: 'fredoka-semi', serif;
   }
 
   .terms {
     color: #209e9a;
+    font-family: 'fredoka-semi', serif;
   }
 
   @media (max-width: 579px) {

@@ -72,7 +72,7 @@
         <div class="form-check">
           <input formControlName="acceptTerms"  class="form-check-input" type="checkbox" id="acceptTerms" [checked]="datos.controls.acceptTerms.value">
           <label class="form-check-label" for="acceptTerms">
-            Acepto <a href="#">términos y condiciones</a> del concurso
+            Acepto <a target="_blank" href="https://www.norkys.pe/mama-viajera/">términos y condiciones</a> del concurso
           </label>
         </div>
         <div *ngIf="datos.controls.acceptTerms.errors?.['required'] && datos.controls.acceptTerms.touched" class="color-pink color-teal fredoka-semi">
@@ -83,7 +83,7 @@
         <div class="form-check">
           <input formControlName="acceptPrivacy" class="form-check-input" type="checkbox" id="acceptPrivacy" [checked]="datos.controls.acceptPrivacy.value">
           <label class="form-check-label" for="acceptPrivacy">
-            Autorizo el <a href="#">tratamiento de mis datos personales</a>
+            Autorizo el <a target="_blank" href="https://www.norkys.pe/manual-procedimiento-de-atencion-de-solicitudes-para-el-ejercicio-de-los-derechos-hy-asesores-s-a-c/ ">tratamiento de mis datos personales</a>
           </label>
         </div>
         <div *ngIf="datos.controls.acceptPrivacy.errors?.['required'] && datos.controls.acceptPrivacy.touched" class="form-text color-pink fredoka-semi">

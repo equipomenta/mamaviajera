@@ -16,8 +16,26 @@
   font-family: 'fredoka-semi', serif;
 }
 
-.fredoka {
-  font-family: 'fredoka', serif;
+.color-teal {
+  color: #209e9a;
+}
+
+.color-pink {
+  color: #e26462;
+}
+
+label {
+  color: #209e9a;
+  font-family: 'fredoka-semi', serif;
+}
+
+.terms {
+  color: #209e9a;
+  font-family: 'fredoka-semi', serif;
+}
+
+a:link, a:visited {
+  color: #209e9a;
 }
 
 .enter-data {
@@ -27,17 +45,26 @@
   padding: 23px 0 25px 0;
 
   input, button, select, optgroup, textarea {
-    border: 1px solid #f6a112 !important;
+    border: 1px solid #f6a112;
   }
 
-  label {
-    color: #209e9a;
-    font-family: 'fredoka-semi', serif;
+  input {
+    font-family: Arial, sans-serif;
+    font-size: 1.5rem;
+    color: #333333;
   }
 
-  .terms {
-    color: #209e9a;
-    font-family: 'fredoka-semi', serif;
+  .form-control::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #9d9d9c;
+    opacity: 1; /* Firefox */
+  }
+
+  .form-control:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #9d9d9c;
+  }
+
+  .form-control::-ms-input-placeholder { /* Microsoft Edge */
+    color: #9d9d9c;
   }
 
   @media (max-width: 579px) {

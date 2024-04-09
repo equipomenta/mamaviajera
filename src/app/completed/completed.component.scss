@@ -15,39 +15,96 @@
 .fredoka-semi {
   font-family: 'fredoka-semi', serif;
 }
-
-.date {
+.wrapper {
+  background-color: white;
+}
+.congrats {
   color: #e26462;
-  font-size: 2rem;
   text-align: center;
 }
 
-.congrats {
+.luck {
   color: #209e9a;
   text-align: center;
   font-family: 'fredoka-semi', serif;
-  font-size: 1.6rem;
+}
+
+.again {
+  font-family: 'fredoka', serif;
+  background-color: #ffebcb;
+  border-radius: 10px;
+  color: #8fac3c;
+  margin: 0 auto;
+}
+.footer {
+  font-family: 'fredoka', serif;
+  color: #e26462;
 }
 
 .terms {
   color: #209e9a;
   text-align: center;
   font-family: 'fredoka-semi', serif;
-
-  font-size: 0.6rem;
 }
 
 .completed {
-  //max-height: 869px;
   background-image: url("/assets/images/fondo-rosado.png");
   background-size: cover;
   padding: 23px 0 50px 0;
 
-  input, button, select, optgroup, textarea {
-    border: 1px solid #f6a112 !important;
+  button {
+    border: 1px solid #8fac3c;
+    background-color: #8fac3c;
+    color: white;
   }
 
-  @media (max-width: 579px) {
+  a:link, a:visited {
+    color: #209e9a;
+  }
+
+  @media (min-width: 724px) {
+    .wrapper {
+      margin: 0 auto;
+      padding: 10px 40px 20px;
+      border-radius: 10px;
+      width: 770px;
+
+      .congrats {
+        color: #e26462;
+        font-size: 4rem;
+        text-align: center;
+      }
+
+      .luck {
+        margin: 30px;
+        font-size: 1.7rem;
+      }
+
+      .again {
+        width: 480px;
+        font-size: 2.5rem;
+        padding: 10px 20px 20px;
+
+        button {
+          font-size: 2.5rem;
+          margin: 0 auto;
+          max-width: 320px;
+        }
+      }
+
+      .footer {
+        font-size: 2.3rem;
+        max-height: 80px;
+        margin: 0 auto;
+      }
+
+      .terms {
+        font-size: 0.7rem;
+      }
+    }
+  }
+
+  @media (min-width: 524px) {
     .wrapper {
       //max-height: 500px;
       //min-width: 180px;
@@ -55,80 +112,39 @@
       background-color: white;
       padding: 10px 40px 20px;
       border-radius: 10px;
-
-      .label {
-        color: #e26462;
-        font-size: 1rem;
-        text-align: center;
-      }
+      width: 770px;
 
       .congrats {
-        max-width: 518px;
-        margin: 30px;
-      }
-
-      .footer {
-        font-size: 1rem;
-        max-width: 355px;
-        max-height: 80px;
-        margin: 0 auto;
-      }
-    }
-  }
-
-  @media (min-width: 580px) {
-    .wrapper {
-      //max-height: 500px;
-      max-width: 980px;
-      margin: 0 auto;
-      background-color: white;
-      padding: 30px 140px 120px;
-      border-radius: 10px;
-
-      .label {
-        color: #e26462;
-        font-size: 2rem;
-        text-align: center;
-      }
-
-      .congrats {
-        max-width: 518px;
-        margin: 30px;
-      }
-
-      .footer {
-        font-size: 2rem;
-        max-width: 355px;
-        max-height: 80px;
-        margin: 0 auto;
-      }
-    }
-  }
-  @media (min-width: 816px) {
-    .wrapper {
-      //max-height: 500px;
-      max-width: 980px;
-      margin: 0 auto;
-      background-color: white;
-      padding: 30px 140px 120px;
-      border-radius: 10px;
-
-      .label {
         color: #e26462;
         font-size: 4rem;
         text-align: center;
       }
 
-      .congrats {
-        max-width: 518px;
+      .luck {
         margin: 30px;
+        font-size: 1.7rem;
+      }
+
+      .again {
+        width: 480px;
+        font-size: 2.5rem;
+        padding: 10px 20px 20px;
+
+        button {
+          font-size: 2.5rem;
+          margin: 0 auto;
+          max-width: 320px;
+        }
       }
 
       .footer {
-        font-size: 2rem;
-        max-width: 355px;
+        font-size: 2.3rem;
         max-height: 80px;
         margin: 0 auto;
+      }
+
+      .terms {
+        font-size: 0.7rem;
       }
     }
   }

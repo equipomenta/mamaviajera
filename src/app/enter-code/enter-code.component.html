@@ -4,10 +4,22 @@
       Ingresa tu código
     </div>
     <div class="input">
-      <input [formControl]="codigo" class="form-control"/>
+      <input [formControl]="codigo" class="form-control text-center" maxlength="21" minlength="21" placeholder="21 caracteres" />
+      <div *ngIf="codigo.errors?.['required'] && codigo.touched" class="form-text color-pink fredoka-semi">
+        Ingrese un código
+      </div>
+      <div *ngIf="codigo.errors?.['minlength'] && codigo.touched" class="form-text color-pink fredoka-semi">
+        Ingrese un código de 21 caracteres
+      </div>
+      <div *ngIf="codigo.errors?.['pattern'] && codigo.touched" class="form-text color-pink fredoka-semi">
+        Ingrese sólo números o letras
+      </div>
     </div>
     <div class="button">
-      <button (click)="next()" class="form-control">Siguiente</button>
+      <button [ngStyle]="{
+        backgroundColor: codigo.invalid ? '#c6c6c6' : '#f6a112',
+        border: codigo.invalid ? '1px solid #c6c6c6' : '1px solid #f6a112'
+     }" [disabled]="codigo.invalid" (click)="next()" class="form-control">Siguiente</button>
     </div>
   </div>
 </div>

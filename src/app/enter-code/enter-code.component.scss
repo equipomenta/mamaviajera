@@ -3,8 +3,25 @@
   src: url('/assets/fonts/Fredoka-Bold.ttf');
 }
 
+@font-face {
+  font-family: "fredoka-semi";
+  src: url('/assets/fonts/Fredoka-SemiBold.ttf');
+}
+
+.fredoka-semi {
+  font-family: 'fredoka-semi', serif;
+}
+
 .fredoka {
   font-family: 'fredoka', serif;
+}
+
+.color-teal {
+  color: #209e9a;
+}
+
+.color-pink {
+  color: #e26462;
 }
 
 .enter-code {
@@ -14,9 +31,26 @@
   padding: 23px 0 50px 0;
 
   input, button, select, optgroup, textarea {
-    border: 1px solid #f6a112 !important;
+    border: 1px solid #f6a112;
   }
 
+  input {
+    font-family: Arial, sans-serif;
+    font-size: 1.5rem;
+    color: #333333;
+  }
+  .form-control::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #9d9d9c;
+    opacity: 1; /* Firefox */
+  }
+
+  .form-control:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #9d9d9c;
+  }
+
+  .form-control::-ms-input-placeholder { /* Microsoft Edge */
+    color: #9d9d9c;
+  }
   @media (max-width: 579px) {
     .wrapper {
       max-height: 500px;
@@ -38,7 +72,6 @@
       }
 
       .button button {
-        background-color: #f6a112;
         color: white;
         font-size: 1rem;
         max-width: 355px;

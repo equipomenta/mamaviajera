@@ -1,34 +1,46 @@
+import { CommonModule, NgSwitch, NgSwitchCase } from "@angular/common";
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import {StepsComponent} from "./steps/steps.component";
-import {EnterCodeComponent} from "./enter-code/enter-code.component";
-import {NgSwitch, NgSwitchCase} from "@angular/common";
-import {EnterDataComponent} from "./enter-data/enter-data.component";
-import {CompletedComponent} from "./completed/completed.component";
+
+import { CompletedComponent } from "./completed/completed.component";
+import { EnterCodeComponent } from "./enter-code/enter-code.component";
+import { EnterDataComponent } from "./enter-data/enter-data.component";
+import { StepsComponent } from "./steps/steps.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, StepsComponent, EnterCodeComponent, NgSwitchCase, NgSwitch, EnterDataComponent, CompletedComponent],
+  imports: [
+    RouterOutlet,
+    StepsComponent,
+    EnterCodeComponent,
+    NgSwitchCase,
+    NgSwitch,
+    EnterDataComponent,
+    CompletedComponent
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
   title = 'Mamá Viajera';
-  step = 1;
-  constructor() {
-  }
+  step = 3;
 
-  nextStep(code: string) {
+  onCode(code: string) {
+    // @TODO:Send code to server
+    this.nextStep();
+  }
+  nextStep() {
     if (this.step < 3) {
       this.step++;
-      console.log('Emmitted Code: ' + code);
     }
   }
 
-  prevStep() {
-    if (this.step > 1) {
-      this.step--;
-    }
+  onData(data: any) {
+    // @TODO:Send data to server
+    this.nextStep();
+  }
+  toFirstStep() {
+    this.step = 1;
   }
 }

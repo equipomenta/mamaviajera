@@ -3,52 +3,98 @@
     <div class="label">
       Completa tus datos
     </div>
-    <form class="row g-3">
+    <form [formGroup]="datos" class="row g-3" (submit)="next()">
       <div class="col-12">
         <label for="name" class="form-label">Nombres y Apellidos completos</label>
-        <input type="text" class="form-control" id="name">
+        <input formControlName="name" type="text" class="form-control" id="name" placeholder="Obligatorio">
+        <div *ngIf="datos.controls.name.errors?.['required'] && datos.controls.name.touched" class="form-text color-pink fredoka-semi">
+          Ingrese sus nombres y apellidos completos
+        </div>
       </div>
       <div class="col-md-6">
         <label for="dni" class="form-label">DNI</label>
-        <input type="email" class="form-control" id="dni">
+        <input formControlName="dni" type="text" class="form-control" id="dni" maxlength="8" minlength="8" placeholder="Obligatorio">
+        <div *ngIf="datos.controls.dni.errors?.['required'] && datos.controls.dni.touched" class="form-text color-pink fredoka-semi">
+          Ingrese su DNI
+        </div>
+        <div *ngIf="datos.controls.dni.errors?.['minlength'] && datos.controls.dni.touched" class="form-text color-pink fredoka-semi">
+          Ingrese su DNI completo
+        </div>
+        <div *ngIf="datos.controls.dni.errors?.['pattern'] && datos.controls.dni.touched" class="form-text color-pink fredoka-semi">
+          Ingrese sólo números
+        </div>
       </div>
       <div class="col-md-6">
         <label for="phone" class="form-label">Teléfono / celular</label>
-        <input type="password" class="form-control" id="phone">
+        <input formControlName="phone" type="text" class="form-control" id="phone" maxlength="9" placeholder="Obligatorio">
+        <div *ngIf="datos.controls.phone.errors?.['required'] && datos.controls.phone.touched" class="form-text color-pink fredoka-semi">
+          Ingrese su teléfono / celular
+        </div>
+        <div *ngIf="datos.controls.phone.errors?.['minlength'] && datos.controls.phone.touched" class="form-text color-pink fredoka-semi">
+          Ingrese su teléfono / celular completo
+        </div>
+        <div *ngIf="datos.controls.phone.errors?.['pattern'] && datos.controls.phone.touched" class="form-text color-pink fredoka-semi">
+          Ingrese sólo números
+        </div>
       </div>
       <div class="col-12">
         <label for="email" class="form-label">Correo Electrónico</label>
-        <input type="text" class="form-control" id="email">
+        <input formControlName="email" type="email" class="form-control" id="email" placeholder="Obligatorio">
+        <div *ngIf="datos.controls.email.errors?.['required'] && datos.controls.email.touched" class="form-text color-pink fredoka-semi">
+          Ingrese su correo electrónico
+        </div>
+        <div *ngIf="datos.controls.email.errors?.['email'] && datos.controls.email.touched" class="form-text color-pink fredoka-semi">
+          Ingrese un correo electrónico válido
+        </div>
       </div>
       <div class="col-12">
         <label for="address" class="form-label">Dirección</label>
-        <input type="text" class="form-control" id="address">
+        <input formControlName="address" type="text" class="form-control" id="address" placeholder="Obligatorio">
+        <div *ngIf="datos.controls.address.errors?.['required'] && datos.controls.address.touched" class="form-text color-pink fredoka-semi">
+          Ingrese su dirección
+        </div>
       </div>
       <div class="col-md-6">
         <label for="state" class="form-label">Departamento</label>
-        <input type="email" class="form-control" id="state">
+        <input formControlName="state" type="email" class="form-control" id="state" placeholder="Obligatorio">
+        <div *ngIf="datos.controls.state.errors?.['required'] && datos.controls.state.touched" class="form-text color-pink fredoka-semi">
+          Ingrese su departamento
+        </div>
       </div>
       <div class="col-md-6">
         <label for="city" class="form-label">Provincia / Distrito</label>
-        <input type="password" class="form-control" id="city">
+        <input formControlName="city" type="text" class="form-control" id="city" placeholder="Obligatorio">
+        <div *ngIf="datos.controls.city.errors?.['required'] && datos.controls.city.touched" class="form-text color-pink fredoka-semi">
+          Ingrese su provincia / distrito
+        </div>
       </div>
       <div class="col-12">
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" id="accept">
-          <label class="form-check-label" for="accept">
-            Acepto términos y condiciones del concurso
+          <input formControlName="acceptTerms"  class="form-check-input" type="checkbox" id="acceptTerms" [checked]="datos.controls.acceptTerms.value">
+          <label class="form-check-label" for="acceptTerms">
+            Acepto <a href="#">términos y condiciones</a> del concurso
           </label>
+        </div>
+        <div *ngIf="datos.controls.acceptTerms.errors?.['required'] && datos.controls.acceptTerms.touched" class="color-pink color-teal fredoka-semi">
+          Acepte los términos y condiciones del concurso
         </div>
       </div>
       <div class="col-12 terms">
-        Se autoriza el uso de datos personales<br>
-        En cumplimiento de la Ley 29733 y D.S. 003-2013-JUS.
+        <div class="form-check">
+          <input formControlName="acceptPrivacy" class="form-check-input" type="checkbox" id="acceptPrivacy" [checked]="datos.controls.acceptPrivacy.value">
+          <label class="form-check-label" for="acceptPrivacy">
+            Autorizo el <a href="#">tratamiento de mis datos personales</a>
+          </label>
+        </div>
+        <div *ngIf="datos.controls.acceptPrivacy.errors?.['required'] && datos.controls.acceptPrivacy.touched" class="form-text color-pink fredoka-semi">
+          Autorice el tratamiento de sus datos personales
+        </div>
       </div>
       <div class="col-12 button">
-        <button (click)="next()" class="form-control button">Participar</button>
-      </div>
-      <div class="col-12 terms">
-        Revisar todos los términos y condiciones en www.norkys.pe
+        <button [ngStyle]="{
+        backgroundColor: datos.invalid ? '#c6c6c6' : '#f6a112',
+        border: datos.invalid ? '1px solid #c6c6c6' : '1px solid #f6a112'
+     }" [disabled]="datos.invalid" type="submit" class="form-control button">Participar</button>
       </div>
     </form>
   </div>

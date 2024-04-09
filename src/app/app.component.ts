@@ -24,7 +24,7 @@ import { StepsComponent } from "./steps/steps.component";
 })
 export class AppComponent {
   title = 'Mamá Viajera';
-  step = 3;
+  step = 1;
 
   onCode(code: string) {
     // @TODO:Send code to server

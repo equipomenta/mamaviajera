@@ -7,7 +7,7 @@ import { DataFormInterface } from "../models/data-form.interface";
   providedIn: 'root'
 })
 export class BackApiService {
-  apiUrl = 'http://localhost:3000';
+  apiUrl = 'http://api.gefyfsac.com:25248';
   constructor(private http: HttpClient) {
   }
 

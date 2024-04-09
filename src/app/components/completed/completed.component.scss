@@ -1,23 +1,7 @@
-@font-face {
-  font-family: "fredoka";
-  src: url('/assets/fonts/Fredoka-Bold.ttf');
-}
-
-@font-face {
-  font-family: "fredoka-semi";
-  src: url('/assets/fonts/Fredoka-SemiBold.ttf');
-}
-
-.fredoka {
-  font-family: 'fredoka', serif;
-}
-
-.fredoka-semi {
-  font-family: 'fredoka-semi', serif;
-}
 .wrapper {
   background-color: white;
 }
+
 .congrats {
   color: #e26462;
   text-align: center;
@@ -36,6 +20,7 @@
   color: #8fac3c;
   margin: 0 auto;
 }
+
 .footer {
   font-family: 'fredoka', serif;
   color: #e26462;
@@ -56,10 +41,6 @@
     border: 1px solid #8fac3c;
     background-color: #8fac3c;
     color: white;
-  }
-
-  a:link, a:visited {
-    color: #209e9a;
   }
 
   @media (min-width: 724px) {

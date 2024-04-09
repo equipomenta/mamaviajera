@@ -1,1 +1,56 @@
-/* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: "fredoka";
+  src: url('/assets/fonts/Fredoka-Bold.ttf');
+}
+
+@font-face {
+  font-family: "fredoka-semi";
+  src: url('/assets/fonts/Fredoka-SemiBold.ttf');
+}
+
+.fredoka {
+  font-family: 'fredoka', serif;
+}
+
+.fredoka-semi {
+  font-family: 'fredoka-semi', serif;
+}
+
+.color-teal {
+  color: #209e9a;
+}
+
+.color-pink {
+  color: #e26462;
+}
+
+label {
+  color: #209e9a;
+  font-family: 'fredoka-semi', serif;
+}
+
+a:link, a:visited {
+  color: #209e9a;
+}
+
+input, button, select, optgroup, textarea {
+  border: 1px solid #f6a112;
+}
+
+input {
+  font-family: Arial, sans-serif;
+  font-size: 1.5rem;
+  color: #333333;
+}
+.form-control::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #9d9d9c;
+  opacity: 1; /* Firefox */
+}
+
+.form-control:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #9d9d9c;
+}
+
+.form-control::-ms-input-placeholder { /* Microsoft Edge */
+  color: #9d9d9c;
+}

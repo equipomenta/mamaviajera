@@ -24,7 +24,7 @@
       <app-enter-data (data)="onData($event)"></app-enter-data>
     </ng-container>
     <ng-container *ngSwitchCase="3">
-      <app-completed></app-completed>
+      <app-completed (firstStep)="onFirstStep()"></app-completed>
     </ng-container>
   </ng-container>
 </div>

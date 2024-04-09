@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { ReactiveFormsModule } from "@angular/forms";
 
 @Component({
@@ -11,5 +11,9 @@ import { ReactiveFormsModule } from "@angular/forms";
   styleUrl: './completed.component.scss'
 })
 export class CompletedComponent {
+  @Output() firstStep = new EventEmitter<any>();
 
+  toFirstStep() {
+    this.firstStep.emit();
+  }
 }

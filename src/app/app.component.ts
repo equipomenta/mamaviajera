@@ -1,4 +1,4 @@
-import { CommonModule, NgSwitch, NgSwitchCase } from "@angular/common";
+import { NgSwitch, NgSwitchCase } from "@angular/common";
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
@@ -39,6 +39,9 @@ export class AppComponent {
   onData(data: any) {
     // @TODO:Send data to server
     this.nextStep();
+  }
+  onFirstStep() {
+    this.toFirstStep();
   }
   toFirstStep() {
     this.step = 1;

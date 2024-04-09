@@ -1,11 +1,13 @@
-import { NgSwitch, NgSwitchCase } from "@angular/common";
+import { NgSwitch, NgSwitchCase } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
-import { CompletedComponent } from "./completed/completed.component";
-import { EnterCodeComponent } from "./enter-code/enter-code.component";
-import { EnterDataComponent } from "./enter-data/enter-data.component";
-import { StepsComponent } from "./steps/steps.component";
+import { CompletedComponent } from './components/completed/completed.component';
+import { EnterCodeComponent } from './components/enter-code/enter-code.component';
+import { EnterDataComponent } from './components/enter-data/enter-data.component';
+import { StepsComponent } from './components/steps/steps.component';
+import { BackService } from './services/back.service';
+import { DataFormInterface } from "./models/data-form.interface";
 
 @Component({
   selector: 'app-root',
@@ -25,24 +27,44 @@ import { StepsComponent } from "./steps/steps.component";
 export class AppComponent {
   title = 'Mamá Viajera';
   step = 1;
+  isCodeValid = this.backService.getCodeIsValid();
+  isUserDataValid = this.backService.getUserDataIsValid();
+
+  constructor(private backService: BackService) {
+    this.isCodeValid.subscribe((isValid) => {
+      if (isValid) {
+        this.nextStep();
+      } else {
+        // @TODO:Show error message
+      }
+    });
+    this.isUserDataValid.subscribe((isValid) => {
+      if (isValid) {
+        this.nextStep();
+      } else {
+        // @TODO:Show error message
+      }
+    });
+  }
 
   onCode(code: string) {
-    // @TODO:Send code to server
-    this.nextStep();
+    this.backService.sendCode(code);
   }
+
   nextStep() {
     if (this.step < 3) {
       this.step++;
     }
   }
 
-  onData(data: any) {
-    // @TODO:Send data to server
-    this.nextStep();
+  onData(data: DataFormInterface) {
+    this.backService.sendUserData(data);
   }
+
   onFirstStep() {
     this.toFirstStep();
   }
+
   toFirstStep() {
     this.step = 1;
   }

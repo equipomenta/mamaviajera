@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { BackApiService } from "./back-api.service";
-import { BehaviorSubject } from "rxjs";
-import { DataFormInterface } from "../models/data-form.interface";
+import { BehaviorSubject } from 'rxjs';
+
+import { BackApiService } from './back-api.service';
+import { DataFormInterface } from '../models/data-form.interface';
 
 @Injectable({
   providedIn: 'root'

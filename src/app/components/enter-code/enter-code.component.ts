@@ -1,6 +1,6 @@
+import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Output } from '@angular/core';
-import { FormControl, ReactiveFormsModule, Validators } from "@angular/forms";
-import { CommonModule } from "@angular/common";
+import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-enter-code',

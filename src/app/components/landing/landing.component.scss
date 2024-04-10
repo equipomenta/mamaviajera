@@ -1,0 +1,15 @@
+.sponsor-logos {
+  max-height: 200px;
+  padding: 33px 0;
+}
+
+.main-logos {
+  background-image: url('/assets/images/fondo-de-playa.png');
+  background-size: cover;
+  max-height: 530px;
+  padding: 33px 0;
+
+  .texto-banner {
+    max-height: 279px
+  }
+}

@@ -1,14 +1,15 @@
-import { ApplicationConfig } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import { HttpClient, provideHttpClient } from '@angular/common/http';
+import { ApplicationConfig, importProvidersFrom } from '@angular/core';
+import { provideRouter, RouterModule } from '@angular/router';
 
 import { routes } from './app.routes';
-import { BackApiService } from "./services/back-api.service";
-import { HttpClient, HttpHandler, provideHttpClient } from "@angular/common/http";
-import { BackService } from "./services/back.service";
+import { BackApiService } from './services/back-api.service';
+import { BackService } from './services/back.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideRouter(routes),
+    // provideRouter(routes),
+    importProvidersFrom(RouterModule.forRoot(routes)),
     HttpClient,
     BackService,
     BackApiService,

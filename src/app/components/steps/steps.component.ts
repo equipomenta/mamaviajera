@@ -1,5 +1,5 @@
+import {NgIf} from '@angular/common';
 import {Component, Input} from '@angular/core';
-import {NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-steps',

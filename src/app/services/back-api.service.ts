@@ -1,13 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { DataFormInterface } from "../models/data-form.interface";
 
+import { DataFormInterface } from '../models/data-form.interface';
+import { environment } from '../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
 export class BackApiService {
-  apiUrl = 'http://api.gefyfsac.com:25248';
+  apiUrl = environment.apiUrl;
+
   constructor(private http: HttpClient) {
   }
 

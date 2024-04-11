@@ -1,0 +1,94 @@
+.enter-code {
+  max-height: 869px;
+  padding: 23px 0 50px 0;
+
+  @media (max-width: 579px) {
+    .wrapper {
+      max-height: 500px;
+      margin: 0 auto;
+      background-color: white;
+      padding: 10px 40px 20px;
+      border-radius: 10px;
+
+      .label {
+        color: #e26462;
+        font-size: 1rem;
+        text-align: center;
+      }
+
+      .input {
+        max-width: 518px;
+        margin: 30px;
+      }
+
+      .button button {
+        color: white;
+        font-size: 1rem;
+        max-width: 355px;
+        max-height: 80px;
+        margin: 0 auto;
+      }
+    }
+  }
+
+  @media (min-width: 580px) {
+    .wrapper {
+      max-height: 500px;
+      max-width: 980px;
+      margin: 0 auto;
+      background-color: white;
+      padding: 30px 140px 120px;
+      border-radius: 10px;
+
+      .label {
+        color: #e26462;
+        font-size: 2rem;
+        text-align: center;
+      }
+
+      .input {
+        max-width: 518px;
+        margin: 30px;
+      }
+
+      .button button {
+        background-color: #f6a112;
+        color: white;
+        font-size: 2rem;
+        max-width: 355px;
+        max-height: 80px;
+        margin: 0 auto;
+      }
+    }
+  }
+  @media (min-width: 816px) {
+    .wrapper {
+      max-height: 500px;
+      max-width: 980px;
+      margin: 0 auto;
+      background-color: white;
+      padding: 30px 140px 120px;
+      border-radius: 10px;
+
+      .label {
+        color: #e26462;
+        font-size: 4rem;
+        text-align: center;
+      }
+
+      .input {
+        max-width: 518px;
+        margin: 30px;
+      }
+
+      .button button {
+        background-color: #f6a112;
+        color: white;
+        font-size: 2rem;
+        max-width: 355px;
+        max-height: 80px;
+        margin: 0 auto;
+      }
+    }
+  }
+}

@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://api.gefyfsac.com:25464'
+  apiUrl: 'https://surametradicional.com:26807'
 };

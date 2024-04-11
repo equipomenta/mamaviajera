@@ -1,4 +1,5 @@
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:25464'
+  apiUrl: 'https://surametradicional.com:26807'
 };
+

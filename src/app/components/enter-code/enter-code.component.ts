@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
+import { BehaviorSubject } from "rxjs";
+import { BackService } from "../../services/back.service";
 
 @Component({
   selector: 'app-enter-code',
@@ -15,6 +17,9 @@ import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 export class EnterCodeComponent {
   @Output() code = new EventEmitter<string>();
 
+  duplicate = false;
+  isCodeValid = this.backService.getCodeIsValid();
+  codeErrors = this.backService.getCodeErrors();
   codigo = new FormControl(
     '',
     [
@@ -25,9 +30,22 @@ export class EnterCodeComponent {
     ]
   );
 
-  next() {
+  constructor(private backService: BackService) {
+    this.isCodeValid.subscribe((isValid) => {
+      if (isValid === true) {
+        this.code.emit();
+      } else if (isValid === false) {
+        this.duplicate = true;
+        setTimeout(() => {
+          this.duplicate = false;
+        },5000);
+      }
+    });
+  }
+
+  submit() {
     if (this.codigo.value) {
-      this.code.emit(this.codigo.value);
+      this.backService.sendCode(this.codigo.value);
     }
   }
 }

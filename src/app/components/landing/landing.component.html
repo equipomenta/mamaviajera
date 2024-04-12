@@ -1,10 +1,10 @@
 <div class="container-fluid">
   <div class="d-flex flex-row justify-content-center gap-md-5 sponsor-logos">
     <div class="d-inline-flex">
-      <img (click)="prevStep()" class="img-fluid" src="assets/images/logo-norkys.png" alt="Logo Norky's">
+      <img class="img-fluid" src="assets/images/logo-norkys.png" alt="Logo Norky's">
     </div>
     <div class="d-inline-flex">
-      <img (click)="nextStep()" class="img-fluid" src="assets/images/logo-inca-kola.png" alt="Logo Inca kola">
+      <img class="img-fluid" src="assets/images/logo-inca-kola.png" alt="Logo Inca kola">
     </div>
   </div>
   <div class="d-flex flex-row justify-content-center align-items-center main-logos gap-md-5">
@@ -18,10 +18,10 @@
   <app-steps [step]="step"></app-steps>
   <ng-container [ngSwitch]="step">
     <ng-container *ngSwitchCase="1">
-      <app-enter-code (code)="onCode($event)"></app-enter-code>
+      <app-enter-code (code)="onValidCode()"></app-enter-code>
     </ng-container>
     <ng-container *ngSwitchCase="2">
-      <app-enter-data (data)="onData($event)"></app-enter-data>
+      <app-enter-data (data)="onValidData()"></app-enter-data>
     </ng-container>
     <ng-container *ngSwitchCase="3">
       <app-completed (firstStep)="onFirstStep()"></app-completed>

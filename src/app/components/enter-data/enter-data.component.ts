@@ -2,6 +2,9 @@ import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
+import { BackService } from '../../services/back.service';
+import { DataFormInterface } from "../../models/data-form.interface";
+
 @Component({
   selector: 'app-enter-data',
   standalone: true,
@@ -15,6 +18,8 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 export class EnterDataComponent {
   @Output() data = new EventEmitter<any>();
 
+  isUserDataValid = this.backService.getUserDataIsValid();
+  userDataErrors = this.backService.getUserDataErrors();
   datos = new FormGroup({
     name: new FormControl('', [Validators.required]),
     dni: new FormControl(
@@ -48,9 +53,21 @@ export class EnterDataComponent {
     acceptPrivacy: new FormControl(false, [Validators.requiredTrue])
   });
 
-  next() {
+  constructor(private backService: BackService) {
+    this.isUserDataValid.subscribe((isValid) => {
+      if (isValid === true) {
+        this.data.emit(this.datos.value);
+      } else if (isValid === false) {
+        setTimeout(() => {
+          this.backService.setUserDataErrors([]);
+        },5000);
+      }
+    });
+    this.backService.fetchIpAddress();
+  }
+  submit() {
     if (this.datos.value) {
-      this.data.emit(this.datos.value);
+      this.backService.sendUserData(this.datos.value as DataFormInterface);
     }
   }
 }

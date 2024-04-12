@@ -3,7 +3,7 @@
     <div class="label">
       Completa tus datos
     </div>
-    <form [formGroup]="datos" class="row g-3" (submit)="next()">
+    <form [formGroup]="datos" class="row g-3" (submit)="submit()">
       <div class="col-12">
         <label for="name" class="form-label">Nombres y Apellidos completos</label>
         <input formControlName="name" type="text" class="form-control" id="name" placeholder="Obligatorio">
@@ -88,6 +88,13 @@
         </div>
         <div *ngIf="datos.controls.acceptPrivacy.errors?.['required'] && datos.controls.acceptPrivacy.touched" class="form-text color-pink fredoka-semi">
           Autorice el tratamiento de sus datos personales
+        </div>
+        <div *ngIf="userDataErrors | async" class="form-text color-pink fredoka-semi">
+          <ul>
+            <li *ngFor="let errors of userDataErrors | async">
+              {{errors.type}} {{errors.path}} {{errors.msg}}
+            </li>
+          </ul>
         </div>
       </div>
       <div class="col-12 button">

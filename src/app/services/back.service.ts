@@ -9,12 +9,12 @@ import { UserModel } from "../models/user.model";
   providedIn: 'root'
 })
 export class BackService {
-  private codeIsValid = new BehaviorSubject<boolean>(false);
-  private userDataIsValid = new BehaviorSubject<boolean>(false);
-  private userList = new BehaviorSubject<UserModel[]>([]);
+  private codeIsValid = new BehaviorSubject<boolean | undefined>(undefined);
+  private userDataIsValid = new BehaviorSubject<boolean | undefined>(undefined);
+  private userDataErrors = new BehaviorSubject<{type: string, msg: string, path: string, location: string}[]>([]);
+  private codeErrors = new BehaviorSubject<{type: string, msg: string, path: string, location: string}[]>([]);
   private code = '';
-  private isLoginValid = new BehaviorSubject<boolean>(false);
-
+  private ipAddress = '';
 
   constructor(private backApiService: BackApiService) {
   }
@@ -31,58 +31,63 @@ export class BackService {
     return this.userDataIsValid.asObservable();
   }
 
-  getUserList() {
-    return this.userList.asObservable();
-  }
-
-  setUserList(users: UserModel[]): void {
-    this.userList.next(users);
-  }
-
   setUserDataIsValid(isValid: boolean): void {
     this.userDataIsValid.next(isValid);
   }
 
-  getLoginValid() {
-    return this.isLoginValid.asObservable();
+  getUserDataErrors() {
+    return this.userDataErrors.asObservable();
   }
-
-  setLoginValid(valid: boolean): void {
-    this.isLoginValid.next(valid);
+  setUserDataErrors(errors: {type: string, msg: string, path: string, location: string}[]): void {
+    this.userDataErrors.next(errors);
+  }
+  getCodeErrors() {
+    return this.codeErrors.asObservable();
+  }
+  setCodeErrors(errors: {type: string, msg: string, path: string, location: string}[]): void {
+    this.codeErrors.next(errors);
   }
 
   sendCode(code: string): void {
     this.code = code;
     this.backApiService
       .postCode(code)
-      .subscribe((res) =>
-      this.setCodeIsValid(res.isValid)
-    );
+      .subscribe((res) => {
+        if (res.errors) {
+          this.setCodeErrors(res.errors);
+          setTimeout(() => {
+            this.setCodeErrors([]);
+          },5000);
+        } else {
+          this.setCodeIsValid(res.isValid);
+        }
+      });
   }
+
   sendUserData(data: DataFormInterface): void {
-    data = { ...data, code: this.code };
+    data = { ...data, code: this.code, ip: this.ipAddress };
     this.backApiService
       .postUserData(data)
       .subscribe((res) => {
-        this.setUserDataIsValid(res.isUserDataValid)
+        if (res.errors) {
+          this.setUserDataErrors(res.errors);
+          setTimeout(() => {
+            this.setUserDataErrors([]);
+          },5000);
+        } else {
+          this.setUserDataIsValid(res.isUserDataValid);
+        }
         this.code = '';
+        this.ipAddress = '';
       }
     );
   }
 
-  getUsers(): void {
+  fetchIpAddress(): void {
     this.backApiService
-      .getUsers()
+      .getIpAddress()
       .subscribe((res) => {
-        this.setUserList(res);
-      });
-  }
-
-  login(login: Partial<{ username: string | null, password: string | null }>): void {
-    this.backApiService
-      .login(login)
-      .subscribe((res) => {
-        this.setLoginValid(res.token)
+        this.ipAddress = res.ip;
       });
   }
 }

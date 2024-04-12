@@ -8,8 +8,7 @@ import { BackService } from './services/back.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    // provideRouter(routes),
-    importProvidersFrom(RouterModule.forRoot(routes)),
+    provideRouter(routes),
     HttpClient,
     BackService,
     BackApiService,

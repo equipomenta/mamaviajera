@@ -14,12 +14,22 @@
       <div *ngIf="codigo.errors?.['pattern'] && codigo.touched" class="form-text color-pink fredoka-semi">
         Ingrese sólo números o letras
       </div>
+      <div *ngIf="duplicate" class="form-text color-pink fredoka-semi">
+        Este código ya fue ingresado, ingrese uno diferente
+      </div>
+      <div *ngIf="codeErrors | async" class="form-text color-pink fredoka-semi">
+        <ul>
+          <li *ngFor="let errors of codeErrors | async">
+            {{errors.type}} {{errors.path}} {{errors.msg}}
+          </li>
+        </ul>
+      </div>
     </div>
     <div class="button">
       <button [ngStyle]="{
         backgroundColor: codigo.invalid ? '#c6c6c6' : '#f6a112',
         border: codigo.invalid ? '1px solid #c6c6c6' : '1px solid #f6a112'
-     }" [disabled]="codigo.invalid" (click)="next()" class="form-control">Siguiente</button>
+     }" [disabled]="codigo.invalid" (click)="submit()" class="form-control">Siguiente</button>
     </div>
   </div>
 </div>

@@ -15,21 +15,15 @@ export class BackApiService {
   constructor(private http: HttpClient) {
   }
 
-  postCode(code: string): Observable<{isValid: boolean}> {
-    return this.http.post<{isValid: boolean}>(`${this.apiUrl}/validate-code`, { code });
+  postCode(code: string): Observable<{isValid: boolean, errors?: {type: string, msg: string, path: string, location: string}[]}> {
+    return this.http.post<{isValid: boolean, errors?: {type: string, msg: string, path: string, location: string}[]}>(`${this.apiUrl}/validate-code`, { code });
   }
 
-  postUserData(data: DataFormInterface): Observable<{isUserDataValid: boolean}> {
-    return this.http.post<{isUserDataValid: boolean}>(`${this.apiUrl}/user-data`, data);
+  postUserData(data: DataFormInterface): Observable<{isUserDataValid: boolean, errors?: {type: string, msg: string, path: string, location: string}[]}> {
+    return this.http.post<{isUserDataValid: boolean, errors?: {type: string, msg: string, path: string, location: string}[]}>(`${this.apiUrl}/user-data`, data);
   }
 
-  getUsers(): Observable<UserModel[]> {
-    return this.http.get<UserResponseInterface[]>(`${this.apiUrl}/users`).pipe(
-      map((users) => users.map((user) => new UserModel(user)))
-    );
-  }
-
-  login(data: Partial<{username: string | null, password: string | null}>): Observable<{token: boolean}> {
-    return this.http.post<{token: boolean}>(`${this.apiUrl}/login`, data);
+  getIpAddress(): Observable<{ip: string}> {
+    return this.http.get<{ip: string}>('http://api.ipify.org/?format=json');
   }
 }

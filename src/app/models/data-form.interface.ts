@@ -6,6 +6,7 @@ export interface DataFormInterface {
   code: string;
   dni: string;
   email: string;
+  ip: string;
   name: string;
   phone: string;
   state: string;

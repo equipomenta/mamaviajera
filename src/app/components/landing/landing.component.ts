@@ -8,8 +8,6 @@ import { EnterDataComponent } from '../enter-data/enter-data.component';
 import { ResultsComponent } from '../results/results.component';
 import { StepsComponent } from '../steps/steps.component';
 import { WaitingComponent } from '../waiting/waiting.component';
-import { BackService } from '../../services/back.service';
-import { DataFormInterface } from '../../models/data-form.interface';
 
 @Component({
   selector: 'app-landing',
@@ -30,28 +28,12 @@ import { DataFormInterface } from '../../models/data-form.interface';
 })
 export class LandingComponent {
   step = 1;
-  isCodeValid = this.backService.getCodeIsValid();
-  isUserDataValid = this.backService.getUserDataIsValid();
 
-  constructor(private backService: BackService) {
-    this.isCodeValid.subscribe((isValid) => {
-      if (isValid) {
-        this.nextStep();
-      } else {
-        // @TODO:Show error message
-      }
-    });
-    this.isUserDataValid.subscribe((isValid) => {
-      if (isValid) {
-        this.nextStep();
-      } else {
-        // @TODO:Show error message
-      }
-    });
+  constructor() {
   }
 
-  onCode(code: string) {
-    this.backService.sendCode(code);
+  onValidCode() {
+    this.nextStep();
   }
 
   nextStep() {
@@ -60,14 +42,8 @@ export class LandingComponent {
     }
   }
 
-  prevStep() {
-    if (this.step > 1) {
-      this.step--;
-    }
-  }
-
-  onData(data: DataFormInterface) {
-    this.backService.sendUserData(data);
+  onValidData() {
+    this.nextStep();
   }
 
   onFirstStep() {

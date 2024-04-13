@@ -18,10 +18,10 @@
   <app-steps [step]="step"></app-steps>
   <ng-container [ngSwitch]="step">
     <ng-container *ngSwitchCase="1">
-      <app-enter-code (code)="onValidCode()"></app-enter-code>
+      <app-enter-code (code)="nextStep()"></app-enter-code>
     </ng-container>
     <ng-container *ngSwitchCase="2">
-      <app-enter-data (data)="onValidData()"></app-enter-data>
+      <app-enter-data (data)="nextStep()"></app-enter-data>
     </ng-container>
     <ng-container *ngSwitchCase="3">
       <app-completed (firstStep)="onFirstStep()"></app-completed>

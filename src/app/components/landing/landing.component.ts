@@ -32,25 +32,13 @@ export class LandingComponent {
   constructor() {
   }
 
-  onValidCode() {
-    this.nextStep();
-  }
-
   nextStep() {
     if (this.step < 5) {
       this.step++;
     }
   }
 
-  onValidData() {
-    this.nextStep();
-  }
-
   onFirstStep() {
-    this.toFirstStep();
-  }
-
-  toFirstStep() {
     this.step = 1;
   }
 }

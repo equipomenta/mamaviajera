@@ -3,7 +3,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 import { BackService } from '../../services/back.service';
-import { DataFormInterface } from "../../models/data-form.interface";
+import { DataFormInterface } from '../../models/data-form.interface';
 
 @Component({
   selector: 'app-enter-data',
@@ -18,6 +18,7 @@ import { DataFormInterface } from "../../models/data-form.interface";
 export class EnterDataComponent {
   @Output() data = new EventEmitter<any>();
 
+  disable = false;
   isUserDataValid = this.backService.getUserDataIsValid();
   userDataErrors = this.backService.getUserDataErrors();
   datos = new FormGroup({
@@ -60,6 +61,7 @@ export class EnterDataComponent {
       } else if (isValid === false) {
         setTimeout(() => {
           this.backService.setUserDataErrors([]);
+          this.disable = false;
         },5000);
       }
     });
@@ -68,6 +70,7 @@ export class EnterDataComponent {
   submit() {
     if (this.datos.value) {
       this.backService.sendUserData(this.datos.value as DataFormInterface);
+      this.disable = true;
     }
   }
 }

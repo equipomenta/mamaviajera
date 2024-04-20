@@ -17,6 +17,7 @@ import { BackService } from "../../services/back.service";
 export class EnterCodeComponent {
   @Output() code = new EventEmitter<string>();
 
+  disable = false;
   duplicate = false;
   isCodeValid = this.backService.getCodeIsValid();
   codeErrors = this.backService.getCodeErrors();
@@ -38,6 +39,7 @@ export class EnterCodeComponent {
         this.duplicate = true;
         setTimeout(() => {
           this.duplicate = false;
+          this.disable = false;
         },5000);
       }
     });
@@ -46,6 +48,7 @@ export class EnterCodeComponent {
   submit() {
     if (this.codigo.value) {
       this.backService.sendCode(this.codigo.value);
+      this.disable = true;
     }
   }
 }

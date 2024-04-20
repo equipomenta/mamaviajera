@@ -99,9 +99,9 @@
       </div>
       <div class="col-12 button">
         <button [ngStyle]="{
-        backgroundColor: datos.invalid ? '#c6c6c6' : '#f6a112',
+        backgroundColor: disable || datos.invalid ? '#c6c6c6' : '#f6a112',
         border: datos.invalid ? '1px solid #c6c6c6' : '1px solid #f6a112'
-     }" [disabled]="datos.invalid" type="submit" class="form-control button">Participar</button>
+     }" [disabled]="disable || datos.invalid" type="submit" class="form-control button">Participar</button>
       </div>
     </form>
   </div>
